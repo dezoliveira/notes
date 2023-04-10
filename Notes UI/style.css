@@ -40,7 +40,7 @@ body {
   max-width: 100%;
 }
 
-.notes__sidebar button {
+button {
   margin-bottom: 10px;
   outline: none;
   border: none;
@@ -84,4 +84,16 @@ body {
   max-height: 200px;
   overflow: auto;
   font-size: 13px;
+}
+
+.btn-delete {
+  background-color: #e74c3c;
+}
+
+.notes__sidebar .btn-delete:hover {
+  background-color: #e74d3ce5;
+}
+
+.hidden {
+  display: none;
 }

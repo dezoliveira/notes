@@ -1,4 +1,5 @@
 const saveButton = document.querySelector("#btnSave")
+const deleteButton = document.querySelector("#btnDelete")
 const titleInput = document.querySelector('#title')
 const descriptionInput = document.querySelector('#description')
 const notesContainer = document.querySelector('#notes__container')
@@ -6,11 +7,14 @@ const notesContainer = document.querySelector('#notes__container')
 function clearForm() {
   titleInput.value = ''
   descriptionInput.value = ''
+  deleteButton.classList.add('hidden')
 }
 
 function displayNoteInForm(note) {
   titleInput.value = note.title
   descriptionInput.value = note.description
+  deleteButton.classList.remove('hidden')
+  deleteButton.setAttribute('data-id', note.id)
 }
 
 function getNoteById(id) {
@@ -80,3 +84,21 @@ saveButton.addEventListener('click', function(){
     addNote(titleInput.value, descriptionInput.value)
   }
 )
+
+function deleteNote(id) {
+  fetch(`https://localhost:7124/api/notes/${id}`, {
+    method: 'DELETE',
+    headers: {
+      "content-type": "application/json"
+    }
+  })
+  .then(response => {
+    clearForm()
+    getAllNotes()
+  })
+}
+
+deleteButton.addEventListener('click', function(){
+  const id = deleteButton.dataset.id
+  deleteNote(id)
+})
