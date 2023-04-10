@@ -3,6 +3,11 @@ const titleInput = document.querySelector('#title')
 const descriptionInput = document.querySelector('#description')
 const notesContainer = document.querySelector('#notes__container')
 
+function clearForm() {
+  titleInput.value = ''
+  descriptionInput.value = ''
+}
+
 function addNote(title, description) {
 
   const body = {
@@ -19,7 +24,10 @@ function addNote(title, description) {
     }
   })
   .then(data => data.json())
-  .then(response => console.log(response))
+  .then(response => {
+    clearForm()
+    getAllNotes()
+  })
 }
 
 function displayNotes(notes) {
