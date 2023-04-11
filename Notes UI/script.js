@@ -8,6 +8,8 @@ function clearForm() {
   titleInput.value = ''
   descriptionInput.value = ''
   deleteButton.classList.add('hidden')
+  deleteButton.setAttribute('data-id', '')
+  saveButton.setAttribute('data-id', '')
 }
 
 function displayNoteInForm(note) {
