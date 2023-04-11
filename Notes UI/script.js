@@ -4,6 +4,7 @@ const titleInput = document.querySelector('#title')
 const descriptionInput = document.querySelector('#description')
 const notesContainer = document.querySelector('#notes__container')
 const notesAlert = document.querySelector('#alertBox')
+let x = null
 
 function clearForm() {
   titleInput.value = ''
@@ -35,6 +36,7 @@ function populateForm(id) {
 function addNote(title, description) {
   if(title.length == 0 || description.length == 0){
     changeNotesAlert('warning', 'Preencha todos os campos!')
+    titleInput.focus()
     return
   }
 
@@ -78,6 +80,12 @@ function displayNotes(notes) {
   // add event listeners
   document.querySelectorAll('.note').forEach(note => {
     note.addEventListener('click', function(){
+      if(x !== null){
+        x.style.border = `none`
+      }
+      x = note
+      note.style.border = `3px solid #e74c3c`
+      note.style.borderRadius = `5px`
       populateForm(note.dataset.id)
     })
   })
@@ -94,7 +102,7 @@ function changeNotesAlert(color, text) {
   notesAlert.className = ''
   notesAlert.classList.add('alert-box', color)
   notesAlert.textContent = text
-  
+
   setTimeout(function () {
     notesAlert.classList.add('hidden');
 }, 2000);
