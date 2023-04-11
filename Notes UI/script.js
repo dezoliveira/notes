@@ -3,11 +3,13 @@ const deleteButton = document.querySelector("#btnDelete")
 const titleInput = document.querySelector('#title')
 const descriptionInput = document.querySelector('#description')
 const notesContainer = document.querySelector('#notes__container')
+const notesAlert = document.querySelector('#alertBox')
 
 function clearForm() {
   titleInput.value = ''
   descriptionInput.value = ''
   deleteButton.classList.add('hidden')
+  notesAlert.classList.add('hidden')
   deleteButton.setAttribute('data-id', '')
   saveButton.setAttribute('data-id', '')
 }
@@ -31,6 +33,10 @@ function populateForm(id) {
 }
 
 function addNote(title, description) {
+  if(title.length == 0 || description.length == 0){
+    changeNotesAlert('warning', 'Preencha todos os campos!')
+    return
+  }
 
   const body = {
     title: title,
@@ -49,6 +55,8 @@ function addNote(title, description) {
   .then(response => {
     clearForm()
     getAllNotes()
+    notesAlert.classList.remove('hidden')
+    changeNotesAlert('success', 'Nota criada com sucesso!')
   })
 }
 
@@ -79,6 +87,17 @@ function getAllNotes() {
   fetch('https://localhost:7124/api/notes')
   .then(data => data.json())
   .then(response => displayNotes(response))
+}
+
+function changeNotesAlert(color, text) {
+  notesAlert.classList.remove('hidden')
+  notesAlert.className = ''
+  notesAlert.classList.add('alert-box', color)
+  notesAlert.textContent = text
+  
+  setTimeout(function () {
+    notesAlert.classList.add('hidden');
+}, 2000);
 }
 
 getAllNotes()
@@ -125,6 +144,7 @@ function deleteNote(id) {
   .then(response => {
     clearForm()
     getAllNotes()
+    changeNotesAlert('danger', 'Nota excluida com sucesso!')
   })
 }
 

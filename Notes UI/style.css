@@ -1,6 +1,6 @@
 * {
   margin: 0;
-  padding: 0s;
+  padding: 0;
   box-sizing: border-box;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
@@ -22,7 +22,7 @@ body {
   width: 400px;
   height: 100vh;
   border-right: 2px solid #ccc;
-  padding: 50px;
+  padding: 80px;
 }
 
 .notes__sidebar input {
@@ -58,7 +58,7 @@ button {
 
 .notes__container {
   width: 100%;
-  padding: 50px;
+  padding: 80px;
   flex: 1;
   display: flex;
   flex-direction: row;
@@ -96,4 +96,36 @@ button {
 
 .hidden {
   display: none;
+}
+
+.notes__alert {
+  position: absolute;
+  width: 100%;
+  top: 15px;
+  display: block;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 1.5s ease-out;
+}
+
+.alert-box {
+  padding: 15px 20px;
+  border-radius: 5px;
+}
+
+.success {
+  background-color: green;
+  color: #f0f0f0;
+}
+
+.warning {
+  background-color: gold;
+  color: #131111;
+}
+
+.danger {
+  background-color: #e74c3c;
+  color: #f0f0f0;
 }
