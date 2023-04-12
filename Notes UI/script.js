@@ -77,7 +77,7 @@ function displayNotes(notes) {
     }
 
     const noteElement = `
-                          <div 
+                          <div
                             class="note ${bgColors[i]}-note"
                             data-id="${note.id}" 
                           >
@@ -100,11 +100,10 @@ function displayNotes(notes) {
   document.querySelectorAll('.note').forEach(note => {
     note.addEventListener('click', function(){
       if(x !== null){
-        x.style.border = `none`
+        x.classList.remove('selected')
       }
       x = note
-      note.style.border = `3px solid #e74c3c`
-      note.style.borderRadius = `5px`
+      note.classList.add('selected')
       populateForm(note.dataset.id)
     })
   })
@@ -147,6 +146,7 @@ function updateNote(id, title, description) {
   .then(response => {
     clearForm()
     getAllNotes()
+    changeNotesAlert('primary', 'Nota atualizada com sucesso!')
   })
 }
 
