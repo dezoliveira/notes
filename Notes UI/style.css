@@ -68,22 +68,33 @@ button {
 
 .note {
   background-color: #eee;
-  padding: 30px;
+  border-radius: 5px;
   width: 25%;
   overflow: hidden;
   margin-right: 30px;
   margin-bottom: 30px;
 }
 
+.note-header {
+  width: 100%;
+  height: 15px;
+}
+
+.note-body {
+  padding: 15px 30px;
+}
+
 .note h3 {
   margin-bottom: 10px;
   font-size: 13px;
+  word-wrap: break-word;
 }
 
 .note p {
   max-height: 200px;
-  overflow: auto;
+  overflow-y: auto;
   font-size: 13px;
+  word-wrap: break-word;
 }
 
 .btn-delete {
@@ -115,17 +126,42 @@ button {
   border-radius: 5px;
 }
 
+.primary {
+  background-color: #0d6efd;
+  color: #f0f0f0;
+}
+
 .success {
-  background-color: green;
+  background-color: #198754;
   color: #f0f0f0;
 }
 
 .warning {
-  background-color: gold;
+  background-color: #ffc107;
   color: #131111;
 }
 
 .danger {
-  background-color: #e74c3c;
+  background-color: #dc3545 ;
   color: #f0f0f0;
+}
+
+.primary-note {
+  background-color: #0d6dfd3b;
+  color: #131111;
+}
+
+.success-note {
+  background-color: #1987543b;
+  color: #131111;
+}
+
+.warning-note {
+  background-color: #ffc1073b;
+  color: #131111;
+}
+
+.danger-note {
+  background-color: #dc35453b;
+  color: #131111;
 }

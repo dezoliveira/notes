@@ -64,12 +64,31 @@ function addNote(title, description) {
 
 function displayNotes(notes) {
   let allNotes = ''
+  let bgColors = ['primary', 'success', 'warning', 'danger']
+  let randomColor = ''
+  // randomColor = Math.floor(Math.random() * 4)
+  // console.log(randomColor)
+  let i = 0
 
   notes.forEach(note => {
+    i = i + 1
+    if(i > 3){
+      i = 0
+    }
+
     const noteElement = `
-                          <div class="note" data-id="${note.id}">
-                            <h3>${note.title}</h3>
-                            <p>${note.description}</p>
+                          <div 
+                            class="note ${bgColors[i]}-note"
+                            data-id="${note.id}" 
+                          >
+                            <div 
+                              class="note-header ${bgColors[i]}"
+                            >
+                            </div>
+                            <div class="note-body">
+                              <h3>${note.title}</h3>
+                              <p>${note.description}</p>
+                            </div>
                           </div>
                         `
     allNotes += noteElement
